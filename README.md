@@ -1,2 +1,2 @@
 # chff
-Chaff Network Reference Implementation
+Overlay Network Reference Implementation
