@@ -1,2 +1,2 @@
-def hello():
-    return (u'Hello')
+from .links import hello
+
