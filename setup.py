@@ -4,6 +4,7 @@ setup(name='chff',
       version='0.1.4',
       install_requires=[
         "aiortc",
+        "nose",
       ],
       description='Overlay Network Reference Implementation',
       classifiers=[
@@ -17,6 +18,7 @@ setup(name='chff',
       author_email='charlesap@gmail.com',
       license='MIT',
       packages=['chff'],
+      scripts=['bin/chffline'],
       test_suite='nose.collector',
       tests_require=['nose'],
       zip_safe=False)
