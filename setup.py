@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='chff',
-      version='0.1.4',
+      version='0.1.5',
       install_requires=[
         "aiortc",
         "nose",
