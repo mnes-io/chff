@@ -139,7 +139,7 @@ def doclient():
     p.add_argument('--debug', '-d')
     a = p.parse_args()
 
-    logging.basicConfig(level=logging.INFORM)
+    logging.basicConfig(level=logging.INFO)
     if a.quiet:
         logging.basicConfig(level=logging.ERROR)
     if a.debug:
