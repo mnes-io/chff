@@ -143,21 +143,24 @@ def doclient():
 
     pc = create_pc()                                            #
 
-    if a.urli !="":
+    if a.urli !='None':
         print(a.urli)
     else:
-        print("need a URL for introductions")
+        print('need a URL for introductions')
+        a.role = 'abort'
 
-    if a.role == 'init':
-        coro = run_offer(pc)                                    #
-    else:
+    if a.role != 'abort':
+      if a.role == 'init':
+          coro = run_offer(pc)                                  #
+      else: 
         coro = run_answer(pc)                                   #
+    
 
-    # run event loop                                            #
-    loop = asyncio.get_event_loop()                             #
-    try:                                                        #
-        loop.run_until_complete(coro)                           #
-    except KeyboardInterrupt:                                   #
-        pass                                                    #
-    finally:                                                    #
-        loop.run_until_complete(pc.close())                     #
+      # run event loop                                            #
+      loop = asyncio.get_event_loop()                             #
+      try:                                                        #
+          loop.run_until_complete(coro)                           #
+      except KeyboardInterrupt:                                   #
+          pass                                                    #
+      finally:                                                    #
+          loop.run_until_complete(pc.close())                     #
