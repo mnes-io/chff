@@ -131,6 +131,9 @@ async def run_offer(pc):                                        #
 def doclient():
     d = 'command line chff client'
     p = argparse.ArgumentParser(description=d)
+    p.add_argument('-i', action='store',
+                    dest='urli',
+                    help='URL of introduction server')
     p.add_argument('role', choices=['init', 'resp'])
     p.add_argument('--debug', '-d')
     a = p.parse_args()
@@ -139,6 +142,12 @@ def doclient():
         logging.basicConfig(level=logging.DEBUG)                #
 
     pc = create_pc()                                            #
+
+    if a.urli !="":
+        print(a.urli)
+    else:
+        print("need a URL for introductions")
+
     if a.role == 'init':
         coro = run_offer(pc)                                    #
     else:
