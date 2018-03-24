@@ -135,11 +135,15 @@ def doclient():
                     dest='urli',
                     help='URL of introduction server')
     p.add_argument('role', choices=['init', 'resp'])
+    p.add_argument('--quiet', '-q')
     p.add_argument('--debug', '-d')
     a = p.parse_args()
 
+    logging.basicConfig(level=logging.INFORM)
+    if a.quiet:
+        logging.basicConfig(level=logging.ERROR)
     if a.debug:
-        logging.basicConfig(level=logging.DEBUG)                #
+        logging.basicConfig(level=logging.DEBUG)
 
     pc = create_pc()                                            #
 
