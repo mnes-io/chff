@@ -1,4 +1,6 @@
-# Copyright (c) 2018 Jeremy Lainé
+# lines terminated with a single '#' are Copyright (c) 2018 Jeremy Lainé and 
+# have the following copyright:
+#
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -127,19 +129,19 @@ async def run_offer(pc):                                        #
     await done.wait()                                           #
 
 def doclient():
-#if __name__ == '__main__':                                     #
-    parser = argparse.ArgumentParser(description='Data channels with copy-and-paste signaling')
-    parser.add_argument('role', choices=['offer', 'answer'])    #
-    parser.add_argument('--verbose', '-v', action='count')      #
-    args = parser.parse_args()                                  #
+    d = 'command line chff client'
+    p = argparse.ArgumentParser(description=d)
+    p.add_argument('role', choices=['init', 'resp'])
+    p.add_argument('--debug', '-d')
+    a = p.parse_args()
 
-    if args.verbose:                                            #
+    if a.debug:
         logging.basicConfig(level=logging.DEBUG)                #
 
     pc = create_pc()                                            #
-    if args.role == 'offer':                                    #
+    if a.role == 'init':
         coro = run_offer(pc)                                    #
-    else:                                                       #
+    else:
         coro = run_answer(pc)                                   #
 
     # run event loop                                            #
